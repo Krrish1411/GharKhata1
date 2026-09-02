@@ -1,7 +1,12 @@
-import { Link, useLocation, Outlet } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useVault } from '../context/VaultContext';
+import type { ReactNode } from 'react';
 
-export default function Layout() {
+interface LayoutProps {
+  children: ReactNode;
+}
+
+export default function Layout({ children }: LayoutProps) {
   const { vaults, currentVaultId, isUnlocked, lockVault, togglePrivacyMode, privacyMode } = useVault();
   const location = useLocation();
   
@@ -108,7 +113,7 @@ export default function Layout() {
       </header>
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <Outlet />
+        {children}
       </main>
 
       <footer className="mt-auto py-6 text-center text-sm text-gray-500 dark:text-gray-400">
