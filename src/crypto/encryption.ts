@@ -80,20 +80,24 @@ export async function decryptData(iv: string, ciphertext: string, key: CryptoKey
 
 /**
  * Create a password verifier by encrypting a known string
+ * Returns { iv, ciphertext } both as base64 strings
  */
-export async function createPasswordVerifier(key: CryptoKey): Promise<string> {
+export async function createPasswordVerifier(key: CryptoKey): Promise<{ iv: string; ciphertext: string }> {
   const knownString = 'GHARKHATA_VERIFIER_2024';
-  const { ciphertext } = await encryptData(knownString, key);
-  return ciphertext;
+  return encryptData(knownString, key);
 }
 
 /**
  * Verify password by checking if it can decrypt the verifier
+ * Verifier should be in format: "iv:ciphertext"
  */
 export async function verifyPassword(verifier: string, password: string, salt: string): Promise<boolean> {
   try {
+    const [iv, ciphertext] = verifier.split(':');
+    if (!iv || !ciphertext) return false;
+    
     const key = await deriveKey(password, salt);
-    const decrypted = await decryptData('', verifier, key);
+    const decrypted = await decryptData(iv, ciphertext, key);
     return decrypted === 'GHARKHATA_VERIFIER_2024';
   } catch {
     return false;
