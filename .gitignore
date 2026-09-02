@@ -2,33 +2,34 @@
 # Dependencies
 node_modules/
 
-# Build outputs
+# Build artifacts
 dist/
 build/
-target/
+*.js.map
+*.ts.map
+
+# Environment
+.env
+.env.local
+.env.*
+
+# Editors
+.vscode/
+.idea/
+
+# Logs
+*.log
 
 # Python
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
-.Python
-env/
-venv/
-.venv/
-.ENV
-.env
 
-# Logs
-*.log
-
-# IDE
-.vscode/
-.idea/
+# Temporary files
+*.tmp
 *.swp
-*.swo
-
-# OS
+*~
 .DS_Store
 Thumbs.db
 
@@ -37,20 +38,17 @@ coverage/
 htmlcov/
 .coverage
 
-# Temporary files
-*.tmp
-*.temp
-
-# Environment specific
-.env.local
-*.env.*
-
 # MyPy
 .mypy_cache/
-__pycache__/
 
-# Pytest
+# PyTest
 .pytest_cache/
+
+# Gradle
+.gradle/
+
+# Target (Rust, etc.)
+target/
 
 # Compressed files
 *.zip
