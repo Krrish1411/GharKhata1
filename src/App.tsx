@@ -6,15 +6,15 @@ import DashboardPage from './pages/DashboardPage';
 import Layout from './components/Layout';
 import './index.css';
 
-function AppRoutes() {
+function AppContent() {
   const { vaults, isUnlocked } = useVault();
 
   if (vaults.length === 0) {
-    return <Route path="*" element={<OnboardingPage />} />;
+    return <OnboardingPage />;
   }
 
   if (!isUnlocked) {
-    return <Route path="*" element={<UnlockPage />} />;
+    return <UnlockPage />;
   }
 
   return (
@@ -35,9 +35,7 @@ function App() {
   return (
     <HashRouter>
       <VaultProvider>
-        <Routes>
-          <AppRoutes />
-        </Routes>
+        <AppContent />
       </VaultProvider>
     </HashRouter>
   );
