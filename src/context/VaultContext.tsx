@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, createContext, useContext } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import type { VaultMeta, VaultData, VaultId } from '../types';
 import { deriveKey, encryptData, decryptData, createPasswordVerifier, verifyPassword, generateSalt } from '../crypto/encryption';
@@ -288,8 +288,6 @@ export function VaultProvider({ children }: { children: ReactNode }) {
     </VaultContext.Provider>
   );
 }
-
-import { createContext, useContext } from 'react';
 
 export function useVault() {
   const context = useContext(VaultContext);
