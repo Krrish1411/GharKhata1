@@ -56,7 +56,8 @@ export function VaultProvider({ children }: { children: ReactNode }) {
   async function createVaultFn(name: string, password: string, baseCurrency: string = 'INR'): Promise<void> {
     const salt = await generateSalt();
     const key = await deriveKey(password, salt);
-    const passwordVerifier = await createPasswordVerifier(key);
+    const { iv, ciphertext } = await createPasswordVerifier(key);
+    const passwordVerifier = `${iv}:${ciphertext}`;
     
     const vaultId = uuidv4();
 
