@@ -1,15 +1,10 @@
-import { Link, useLocation } from 'react-router-dom';
-import type { ReactNode } from 'react';
+import { Link, useLocation, Outlet } from 'react-router-dom';
 import { useVault } from '../context/VaultContext';
 
-interface LayoutProps {
-  children: ReactNode;
-}
-
-export default function Layout({ children }: LayoutProps) {
+export default function Layout() {
   const { vaults, currentVaultId, isUnlocked, lockVault, togglePrivacyMode, privacyMode } = useVault();
   const location = useLocation();
-
+  
   const navItems = [
     { path: '/', label: 'Dashboard' },
     { path: '/accounts', label: 'Accounts' },
@@ -17,7 +12,7 @@ export default function Layout({ children }: LayoutProps) {
     { path: '/categories', label: 'Categories' },
     { path: '/settings', label: 'Settings' },
   ];
-
+  
   const currentVault = vaults.find(v => v.id === currentVaultId);
 
   return (
@@ -113,7 +108,7 @@ export default function Layout({ children }: LayoutProps) {
       </header>
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {children}
+        <Outlet />
       </main>
 
       <footer className="mt-auto py-6 text-center text-sm text-gray-500 dark:text-gray-400">

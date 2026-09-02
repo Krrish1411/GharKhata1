@@ -1,4 +1,3 @@
-import React from 'react';
 import { useVault } from '../context/VaultContext';
 
 export default function DashboardPage() {
