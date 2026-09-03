@@ -1,76 +1,60 @@
-```gitignore
-# Compiled and build artifacts
-*.pyc
-__pycache__/
-*.o
-*.obj
-dist/
-build/
-target/
-
+```
 # Dependencies
-.venv/
-venv/
 node_modules/
-.npm/
-.yarn/
-.pip/
 
-# Logs and temp files
-*.log
-*.tmp
-*.swp
-*.swo
-*.out
-
-# Environment
+# Environment variables
 .env
 .env.local
 .env.*
 
-# Editors
-.vscode/
-.idea/
-*.swp
-*.swo
+# Build outputs
+dist/
+build/
+target/
 
-# Python specific
-*.pyc
+# Python cache
 __pycache__/
+*.pyc
 *.pyo
 *.pyd
-.Python
-*.so
-.coverage
-htmlcov/
-.mypy_cache/
-.pytest_cache/
-.tox/
 
-# Node.js specific
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+
+# IDE specific
+.vscode/
+.idea/
+
+# OS generated
+.DS_Store
+Thumbs.db
+
+# Coverage reports
+coverage/
+htmlcov/
+.coverage
+
+# Distribution / packaging
+.pytest_cache/
+.mypy_cache/
+.nyc_output/
+coverage.xml
+*.gcda
+
+# Node.js
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# OS generated files
-.DS_Store
-Thumbs.db
-ehthumbs.db
-Icon?
-.directory
-*.nib
-*~
-.DS_Store?
-```
+# Vite
+.vite/
 
-Wait, I need to reconsider. Looking at the file changes again:
-
-Added files: []
-Deleted files: []
-Modified files: ['src/context/VaultContext.tsx', 'src/crypto/encryption.ts']
-
-These are only TypeScript/JSX source files. No build artifacts, dependencies, or temp files are mentioned in the changes. Following rule #6, if the changes contain only source/config files and no build artifacts, dependencies, or temp files, I should output an empty .gitignore.
-
-```gitignore
+# PWA
+workbox-*.js
+workbox-*.js.map
 
 ```

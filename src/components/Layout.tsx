@@ -12,6 +12,10 @@ export default function Layout({ children }: LayoutProps) {
   
   const navItems = [
     { path: '/', label: 'Dashboard' },
+    { path: '/people-ledger', label: 'People Ledger' },
+    { path: '/budgets', label: 'Budgets' },
+    { path: '/assets', label: 'Assets' },
+    { path: '/liabilities', label: 'Liabilities' },
     { path: '/accounts', label: 'Accounts' },
     { path: '/transactions', label: 'Transactions' },
     { path: '/categories', label: 'Categories' },
